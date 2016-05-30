@@ -1,4 +1,4 @@
-# 'Failed to import bridging header'奇葩解决方案
+# Failed to import bridging header 的奇葩解决方案
 
 
 本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的`Cocoapods`的`1.0.0`终于出正式版本了，介于`0.38.0`到`0.39.0`的痛苦过程，心里有点小担心，不过那时还好是`Objective-C`，问题出在配置上都可以[`stackoverflow`](http://stackoverflow.com/)解决，这次要面对这次还要多面临`Swift`的挑战，废话太多了，直接开整。
