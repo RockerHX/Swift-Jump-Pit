@@ -17,10 +17,10 @@ command alias reveal_stop expr NSNotificationCenter.defaultCenter().postNotifica
 Reveal 2以后的新版本（Framework）-> `~/.lldbinit`：
 
 ```zsh
-command alias reveal_load_sim expr dlopen("/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer", 2)
-command alias reveal_load_dev expr dlopen(NSBundle.mainBundle().pathForResource("RevealServer", ofType: "framework")!, 2)
-command alias reveal_start expr NSNotificationCenter.defaultCenter().postNotificationName("IBARevealRequestStart", object: nil)
-command alias reveal_stop expr NSNotificationCenter.defaultCenter().postNotificationName("IBARevealRequestStop", object: nil)
+command alias swift_reveal_load_sim expr dlopen("/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer", 2)
+command alias swift_reveal_load_dev expr dlopen(NSBundle.mainBundle().pathForResource("RevealServer", ofType: "framework")!, 2)
+command alias swift_reveal_start expr NSNotificationCenter.defaultCenter().postNotificationName("IBARevealRequestStart", object: nil)
+command alias swift_reveal_stop expr NSNotificationCenter.defaultCenter().postNotificationName("IBARevealRequestStop", object: nil)
 ```
 
 折腾了半天，方法看似可行，就是跑起来没效果，貌似断点里不再支持dlopen，无奈，那只能在代码里来一发。
@@ -32,3 +32,9 @@ command alias reveal_stop expr NSNotificationCenter.defaultCenter().postNotifica
 ```
 
 到目前为止，我能找到最简单，也不会侵入工程的一种方式，还不需要`.lldbinit`。
+
+> 更新：2017-03-19
+> 试着改变了一下`.lldbinit`文件权限，断点模式可以了，可能是跟macOS权限问题类似
+```zsh
+chmod 777 .lldbinit
+```
